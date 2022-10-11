@@ -1,0 +1,16 @@
+<%= form_with(model: @static_page, method: "get") do |form| %>
+  <p>Enter User ID</p>
+  <%= form.label :user_id %>
+  <%= form.text_field :user_id %>
+  <%= form.submit "Find User Photos"%>
+<% end %>
+
+<br>
+
+<% if @photos %>
+  <% @photos.each do |photo| %>
+    <%= image_tag "#{Flickr.url_n(photo)}" %>
+  <% end %>
+<% else %>
+  <p>User with this ID does not exist! Try again! </p>
+<% end%>
